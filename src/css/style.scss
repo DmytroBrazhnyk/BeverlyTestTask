@@ -1,0 +1,381 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+$primary-color: #333;
+body {
+    color: $primary-color;
+}
+
+.container{
+    max-width: 1920px; /* Максимальна ширина блоку */
+    width: 100%; /* Робить блок адаптивним */
+    margin: 0 auto; /* Центрує блок по горизонталі */
+    box-sizing: border-box;
+}
+
+.titleBlock{
+    height: 950px;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: end;
+    transition: background-image 1s ease-in-out;
+    &_offerCarusel{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: start;
+        background-color: rgba(0, 76, 132, 0.4);
+        width: 100%;
+        max-width: 1300px;
+        padding-left: 20px;
+        height: 50%;
+        &_textItem{
+            color: #fff;
+            font-weight: 500;
+            font-size: 24px;
+        }
+        &_actionBtn {
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: #fbd341; 
+            border-radius: 12px; 
+            font-size: 14px; 
+            width: 240px; 
+            height: 38px; 
+            text-align: center; 
+            border: none; 
+            text-decoration: none;
+            font-weight: 550;
+            color: #000000;
+            cursor: pointer; 
+            transition: background-color 0.3s ease, transform 0.2s ease;   
+            &:hover {
+                background: #e0a82d; 
+                transform: scale(1.05); 
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+        &_indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            &_circle {
+                width: 10px;
+                height: 10px;
+                background-color: #edd89d;
+                border-radius: 50%;
+                transition: background-color 0.3s ease;
+                cursor: pointer;
+            }
+        }
+    }
+}
+.activeCircle {
+    background-color: #fbd341;
+}
+
+.actuallyOffers{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    &_menu {
+        display: flex;
+        &_button {
+            padding: 10px 20px;
+            border: 2px solid transparent; 
+            color: #000000; 
+            font-weight: 700;
+            background-color: transparent; 
+            cursor: pointer;
+            border: none;
+            transition: color 0.3s ease, border-color 0.3s ease;
+            &.active {
+                color: #fbd341; 
+                border-color: #fbd341; 
+            }
+            &:hover {
+                color: #e0a82d; 
+                border-color: #e0a82d; 
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    &_carusel {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        &_cards{
+            width: 80%;  
+            display: flex;    
+            justify-content: space-around;  
+        }
+        &_arrow {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            transition: background-color 0.3s ease;
+            svg {
+                width: 16px;
+                height: 16px;
+                stroke: #000000; 
+            }
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.1); 
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+
+.card {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height: 200px;
+    width: 30%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &.animate {
+        transition: all 0.3s ease; // Загальна анімація
+    }
+
+    &.visible {
+        display: flex;
+    }
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    &_img {
+        width: 275px;
+        height: 180px;
+        object-fit: cover;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    }
+
+    &_content {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        height: 100%;
+        justify-content: space-between;
+        background-color: #fff;
+    }
+
+    &_title {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0;
+        color: #333;
+    }
+
+    &_period,
+    &_description,
+    &_price {
+        font-size: 14px;
+        margin: 5px 0;
+        color: #666;
+    }
+
+    &_price {
+        font-weight: bold;
+        color: #e94e77;
+    }
+}
+
+.advantages {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: background-color 0.3s ease;
+
+    &_title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    &_content {
+        display: flex;
+        align-items: flex-start; /* Align items at the start */
+        gap: 20px; /* Space between image and text */
+
+        &_img {
+            width: 50%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        &_paragraph {
+            font-size: 16px;
+            color: #666;
+            text-align: justify;
+            line-height: 1.6;
+            width: 50%; /* Adjust text width as needed */
+        }
+    }
+}
+
+.register {
+    
+    height: 235px;
+    margin: 0 auto; // Центрування по горизонталі
+    padding: 20px; // Відступи всередині блоку
+    background-image: url("/img/Слой\ 19.png");
+
+    .register_form {
+        max-width: 1280px;
+        background-color: rgba(0, 0, 0, 0.5); // чорний фон з 50% прозорістю
+        border-radius: 10px; // Закруглення кутів
+        padding: 25px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap; // Щоб форма не виходила за межі блоку при стиснутій ширині
+
+        input,
+        select {
+            border: none;
+            background: transparent;
+            border-bottom: 1px solid #ccc; // Лінія під полями
+            padding: 10px;
+            margin-right: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input::placeholder,
+        select option {
+            color: #999; // Колір тексту в placeholder
+        }
+
+        .register_form_button {
+            background: #fbd341;
+            border: none;
+            color: #000;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            
+            &:hover {
+                background: #e0a82d;
+                transform: scale(1.05);
+            }
+        }
+    }
+}
+
+.footer{
+    background-color: #22334d;
+    height: 300px;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    background: #fff;
+    z-index: 1000; // Ensure header is above other content
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header_logo {
+    flex: 0 1 auto;
+}
+.header_logo img {
+    max-width: 150px; // Adjust as needed
+}
+.header_navigation {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.header_navigation_top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+}
+.header_navigation_address {
+    margin-bottom: 5px;
+}
+.header_navigation_phone {
+    margin-bottom: 5px;
+}
+.header_navigation_icons img {
+    width: 20px;
+    margin-left: 5px;
+}
+.header_navigation_bottom {
+    display: flex;
+    align-items: center;
+    
+    gap: 15px;
+    background-color: #fbd341;
+}
+.header_navigation_button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #333;
+    position: relative;
+    padding: 5px 10px;
+}
+.header_navigation_menu {
+    position: relative;
+}
+.header_navigation_dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    z-index: 1000;
+    padding: 10px;
+    min-width: 150px;
+}
+.header_navigation_menu:hover .header_navigation_dropdown {
+    display: block;
+}
+.header_navigation_dropdown a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+}
+.header_navigation_dropdown a:hover {
+    background: #f0f0f0;
+}
