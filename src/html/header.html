@@ -1,17 +1,58 @@
 <header class="container header">
-    <div class="header_logo">
-        <img src="/img/logo.png" alt="Logo">
-    </div>
-    <nav class="header_navigation">
-        <div class="header_navigation_top">
-            <div class="header_navigation_address">г. Харьков, ул. Мироносицкая 10</div>
-            <div class="header_navigation_phone">+38 (000) 000-00-00</div>
-            <div class="header_navigation_icons">
-                <img src="/path/to/icon1.png" alt="Icon 1">
-                <img src="/path/to/icon2.png" alt="Icon 2">
-            </div>
+    <div class="header wrapper">
+        <div class="header_logo">
+            <img src="/img/logo.png" alt="Logo">
         </div>
-        <div class="header_navigation_bottom">
+        <nav class="header_navigation">
+            <div class="header_navigation_top">
+                <div class="header_navigation_address">
+                    <img src="/img/Слой 3.png" alt="">
+                    г. Харьков, ул. Мироносицкая 10
+                </div>
+                <div class="header_navigation_phone">
+                    <img src="/img/Слой 4.png" alt="">
+                    +38 (000) 000-00-00
+                </div>
+                <div class="header_navigation_icons">
+                    <img src="/img/Слой 7.png" alt="/img/Слой 7.png">
+                    <img src="/img/Слой 8.png" alt="/img/Слой 8.png">
+                </div>
+            </div>
+            <div class="header_navigation_bottom">
+                <button class="header_navigation_button first">Главная</button>
+                <div class="header_navigation_menu">
+                    <button class="header_navigation_button">Туры</button>
+                    <div class="header_navigation_dropdown">
+                        <a href="#">Горящие туры</a>
+                        <a href="#">Поиск тура</a>
+                        <a href="#">Туры по Украине</a>
+                        <a href="#">Экскурсионные туры</a>
+                        <a href="#">Week end туры</a>
+                    </div>
+                </div>
+                <button class="header_navigation_button">Страны</button>
+                <div class="header_navigation_menu">
+                    <button class="header_navigation_button">Услуги</button>
+                    <div class="header_navigation_dropdown">
+                        <a href="#">Авиабилеты</a>
+                        <a href="#">Визовая поддержка</a>
+                        <a href="#">Индивидуальный трансфер</a>
+                        <a href="#">Подарочные сертификаты</a>
+                        <a href="#">Бронирование отелей и апартаментов</a>
+                        <a href="#">Как забронировать и оплатить тур</a>
+                    </div>
+                </div>
+                <button class="header_navigation_button">О компании</button>
+                <button class="header_navigation_button">Контакты</button>
+            </div>
+        </nav>
+        <button class="header_hamburger_openBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 12H21M3 6H21M3 18H21" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <nav class="header_mobile_menu">
+            <!-- Duplicated navigation content here -->
             <button class="header_navigation_button">Главная</button>
             <div class="header_navigation_menu">
                 <button class="header_navigation_button">Туры</button>
@@ -36,6 +77,5 @@
                 </div>
             </div>
             <button class="header_navigation_button">Контакты</button>
-        </div>
-    </nav>
+        </nav>
 </header>

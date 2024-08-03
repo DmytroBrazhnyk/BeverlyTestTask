@@ -6,12 +6,20 @@
 
 body {
   color: #333;
+  font-family: Arial, sans-serif;
 }
 
 .container {
-  max-width: 1920px; /* Максимальна ширина блоку */
-  width: 100%; /* Робить блок адаптивним */
-  margin: 0 auto; /* Центрує блок по горизонталі */
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
   box-sizing: border-box;
 }
 
@@ -24,21 +32,25 @@ body {
   align-items: end;
   transition: background-image 1s ease-in-out;
 }
+.titleBlock_bg {
+  background-color: rgba(0, 76, 132, 0.4);
+  height: 50%;
+  width: 100%;
+}
 .titleBlock_offerCarusel {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: start;
-  background-color: rgba(0, 76, 132, 0.4);
   width: 100%;
   max-width: 1300px;
   padding-left: 20px;
-  height: 50%;
+  height: 100%;
 }
 .titleBlock_offerCarusel_textItem {
   color: #fff;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 36px;
 }
 .titleBlock_offerCarusel_actionBtn {
   display: flex;
@@ -46,13 +58,12 @@ body {
   justify-content: center;
   background: #fbd341;
   border-radius: 12px;
-  font-size: 14px;
-  width: 240px;
-  height: 38px;
+  font-size: 24px;
+  padding: 12px;
   text-align: center;
   border: none;
   text-decoration: none;
-  font-weight: 550;
+  font-weight: 400;
   color: #000000;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -83,18 +94,21 @@ body {
 }
 
 .actuallyOffers {
-  height: 300px;
   display: flex;
   flex-direction: column;
+  padding-bottom: 60px;
 }
 .actuallyOffers_menu {
   display: flex;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 .actuallyOffers_menu_button {
   padding: 10px 20px;
   border: 2px solid transparent;
   color: #000000;
   font-weight: 700;
+  font-size: 24px;
   background-color: transparent;
   cursor: pointer;
   border: none;
@@ -144,72 +158,111 @@ body {
   outline: none;
 }
 
-.card {
-  display: none;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  height: 200px;
-  width: 30%;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card.animate {
-  transition: all 0.3s ease;
-}
-.card.visible {
+.actuallyOffers_carusel {
   display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
 }
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+.actuallyOffers_carusel_cards {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: auto;
+  gap: 20px;
+  padding-left: 10px;
 }
-.card_img {
-  width: 275px;
-  height: 180px;
-  object-fit: cover;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+
+.actuallyOffers_carusel_card {
+  flex: 0 0 600px;
+  margin: 10px;
+  box-sizing: border-box;
+  gap: 10px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
 }
-.card_content {
+
+.actuallyOffers_carusel_card img {
+  max-width: 100%;
+  height: auto;
+  margin-left: 20px; /* Відступ між картинкою і текстом */
+}
+
+.actuallyOffers_carusel_card_text {
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  height: 100%;
-  justify-content: space-between;
-  background-color: #fff;
+  text-align: left;
 }
-.card_title {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-  color: #333;
+
+.actuallyOffers_carusel_card_text_main {
+  display: flex;
+  flex-direction: column;
 }
-.card_period, .card_description, .card_price {
-  font-size: 14px;
+
+.actuallyOffers_carusel_card h3,
+.actuallyOffers_carusel_card p,
+.actuallyOffers_carusel_card span {
   margin: 5px 0;
-  color: #666;
+  text-align: left;
 }
-.card_price {
-  font-weight: bold;
-  color: #e94e77;
+
+.actuallyOffers_carusel_card span {
+  font-size: 20px;
+}
+
+.actuallyOffers_carusel_card button {
+  background-color: #fbd341;
+  border: none;
+  color: #000;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.actuallyOffers_carusel_card button:hover {
+  background-color: #e0a82d;
+  transform: scale(1.05);
+}
+
+.actuallyOffers_carusel_arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.actuallyOffers_carusel_arrow.left {
+  left: 0px;
+}
+
+.actuallyOffers_carusel_arrow.right {
+  right: 0px;
 }
 
 .advantages {
   background-color: rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 40px;
   transition: background-color 0.3s ease;
 }
 .advantages_title {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
   color: #333;
   margin-bottom: 20px;
-  text-align: center;
 }
 .advantages_content {
   display: flex;
-  align-items: flex-start; /* Align items at the start */
-  gap: 20px; /* Space between image and text */
+  align-items: flex-start;
+  gap: 40px;
 }
 .advantages_content_img {
   width: 50%;
@@ -218,24 +271,28 @@ body {
   border-radius: 10px;
 }
 .advantages_content_paragraph {
-  font-size: 16px;
+  font-size: 20px;
   color: #666;
-  text-align: justify;
+  align-self: flex-end;
   line-height: 1.6;
   width: 50%; /* Adjust text width as needed */
 }
 
 .register {
-  height: 235px;
+  height: 250px;
   margin: 0 auto;
   padding: 20px;
   background-image: url("/img/Слой 19.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .register .register_form {
+  margin-top: 20px;
   max-width: 1280px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  padding: 25px;
+  padding: 36px;
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
@@ -249,10 +306,11 @@ body {
   margin-right: 10px;
   font-size: 16px;
   outline: none;
+  color: #ccc;
 }
 .register .register_form input::placeholder,
 .register .register_form select option {
-  color: #999;
+  color: #c7c1c1;
 }
 .register .register_form .register_form_button {
   background: #fbd341;
@@ -268,10 +326,49 @@ body {
   background: #e0a82d;
   transform: scale(1.05);
 }
+@media (max-width: 768px) {
+  .register .register_form {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+  }
+  .register input,
+  .register select {
+    width: 100%;
+    margin-right: 0;
+    font-size: 14px;
+  }
+  .register .register_form_button {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .register {
+    height: 360px;
+  }
+  .register_form {
+    flex-direction: column;
+  }
+  input,
+  select {
+    font-size: 0.875rem;
+  }
+  .register_form_button {
+    font-size: 0.875rem;
+  }
+}
+.register_title {
+  text-transform: uppercase;
+  color: #fff;
+}
 
 .footer {
   background-color: #22334d;
-  height: 300px;
+  min-height: 300px;
 }
 
 .header {
@@ -280,17 +377,13 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  background: #fff;
+  background: none;
   z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.header_logo {
-  flex: 0 1 auto;
+  transition: background-color 0.3s ease;
 }
 
 .header_logo img {
@@ -306,17 +399,15 @@ body {
 
 .header_navigation_top {
   display: flex;
-  flex-direction: column;
   align-items: flex-end;
   margin-bottom: 10px;
-  font-size: 14px;
-  color: #333;
+  font-size: 18px;
+  font-weight: 400;
+  gap: 10px;
+  color: #ffffff;
 }
 
-.header_navigation_address {
-  margin-bottom: 5px;
-}
-
+.header_navigation_address,
 .header_navigation_phone {
   margin-bottom: 5px;
 }
@@ -329,7 +420,7 @@ body {
 .header_navigation_bottom {
   display: flex;
   align-items: center;
-  gap: 15px;
+  border-radius: 20px;
   background-color: #fbd341;
 }
 
@@ -340,7 +431,22 @@ body {
   cursor: pointer;
   color: #333;
   position: relative;
-  padding: 5px 10px;
+  padding: 15px 25px;
+  font-size: 18px;
+}
+.header_navigation_button:hover {
+  background-color: #e0a82d; /* Зміна кольору фону при ховері */
+  transform: scale(1.05); /* Легке збільшення при ховері */
+}
+
+.header_navigation_button.first {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.header_navigation_bottom .header_navigation_button:last-child {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .header_navigation_menu {
@@ -352,7 +458,7 @@ body {
   position: absolute;
   top: 100%;
   right: 0;
-  background: #fff;
+  background-color: #398ee3;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   z-index: 1000;
@@ -368,9 +474,230 @@ body {
   display: block;
   padding: 5px 10px;
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
+  font-size: 18px;
 }
 
 .header_navigation_dropdown a:hover {
-  background: #f0f0f0;
+  background: #fbd341;
+}
+
+@media (max-width: 720px) {
+  .header_navigation {
+    display: none;
+  }
+}
+footer {
+  background-color: #22334d;
+}
+
+.footer {
+  color: #fff; /* Білий текст */
+  padding: 20px;
+  gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+.footer .footer_leftSide {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  gap: 10px;
+}
+.footer .footer_leftSide .footer_leftSide_logo img {
+  max-width: 150px; /* Приклад розміру логотипу */
+}
+.footer .footer_leftSide .footer_leftSide_description,
+.footer .footer_leftSide .footer_leftSide_copyright {
+  margin: 10px 0;
+}
+.footer .footer_leftSide .footer_leftSide_description {
+  border-bottom: 1px solid #666; /* Декоративна сірі рисочка */
+  padding-bottom: 10px;
+}
+.footer .footer_leftSide .footer_leftSide_copyright {
+  display: flex;
+  align-items: center;
+}
+.footer .footer_leftSide .footer_leftSide_copyright img {
+  margin-left: 5px;
+  max-width: 50px; /* Приклад розміру логотипу */
+}
+.footer .footer_rightSide {
+  display: flex;
+  justify-content: space-between;
+  gap: 42px;
+}
+.footer .footer_rightSide .footer_rightSide_nav,
+.footer .footer_rightSide .footer_rightSide_support,
+.footer .footer_rightSide .footer_rightSide_contacts {
+  margin-bottom: 20px;
+}
+.footer .footer_rightSide h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.footer .footer_rightSide ul {
+  list-style-type: none;
+  padding: 0;
+}
+.footer .footer_rightSide ul li {
+  margin: 5px 0;
+}
+.footer .footer_rightSide ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+.footer .footer_rightSide ul li a:hover {
+  text-decoration: underline;
+}
+.footer .footer_rightSide .footer_rightSide_contacts div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.footer .footer_rightSide .footer_rightSide_contacts div img {
+  margin-right: 10px;
+  max-width: 20px; /* Приклад розміру іконок */
+}
+@media (max-width: 600px) {
+  .footer .footer_rightSide {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .footer .footer_rightSide_support {
+    order: 2; /* Переміщення підтримки під навігацію */
+  }
+  .footer .footer_rightSide_nav {
+    order: 1;
+  }
+  .footer .footer_rightSide_contacts {
+    order: 3;
+  }
+}
+
+@media (max-width: 1200px) {
+  .actuallyOffers_carusel_card {
+    flex: 0 0 500px; /* Зменшити розмір карток на середніх екранах */
+  }
+}
+@media (max-width: 900px) {
+  .actuallyOffers_carusel_card {
+    flex: 0 0 400px; /* Зменшити розмір карток на менших екранах */
+  }
+  .advantages_content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .advantages_content_paragraph {
+    align-self: auto;
+    width: auto;
+  }
+  .advantages_content_img {
+    width: auto;
+  }
+}
+@media (max-width: 600px) {
+  .actuallyOffers_carusel_card {
+    flex: 0 0 300px; /* Зменшити розмір карток на мобільних екранах */
+    position: relative; /* Додати позицію для коректного відображення картинки і тексту */
+    background: rgba(25, 164, 206, 0.5);
+  }
+  .actuallyOffers_carusel_card img {
+    position: absolute; /* Картинка розтягується на весь блок */
+    left: 15%;
+    margin: 0 auto;
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+  }
+  .actuallyOffers_carusel_card_text {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+    padding: 10px; /* Зменшити відступи для мобільних екранів */
+    color: #ffffff; /* Білий текст */
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    box-sizing: border-box;
+    /* Інші стилі для тексту */
+  }
+  .actuallyOffers_carusel_card_text_main {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  }
+  .actuallyOffers_carusel_card_text span {
+    font-size: 20px;
+  }
+  .actuallyOffers_carusel_card_text {
+    text-align: center; /* Вирівнювання тексту по центру для мобільних екранів */
+  }
+  .advantages_content_img {
+    max-width: 320px;
+  }
+}
+.header_hamburger_openBtn {
+  background: none;
+  border: none;
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .header_navigation {
+    display: none;
+  }
+  .header_hamburger_openBtn {
+    display: block;
+  }
+}
+.header_mobile_menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  z-index: 1000;
+  display: none; /* Initially hidden */
+}
+
+.header_mobile_menu_closeBtn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.header_mobile_menu a,
+.header_mobile_menu button {
+  color: #ffffff;
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-size: 18px;
+  text-align: left;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.header_mobile_menu a:hover,
+.header_mobile_menu button:hover {
+  background: #fbd341;
 }

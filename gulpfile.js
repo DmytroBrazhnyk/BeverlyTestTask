@@ -1,11 +1,10 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
-const concat = require('gulp-concat');
-const uglify = require('gulp-uglify');
 const browserSync = require('browser-sync').create();
 const fileInclude = require('gulp-file-include');
+const babel = require('gulp-babel'); // Додано для обробки JS
 
-// Компиляція SCSS у CSS
+// Compile SCSS to CSS
 gulp.task('sass', function() {
     return gulp.src('src/css/**/*.scss')
         .pipe(sass().on('error', sass.logError))
@@ -13,16 +12,7 @@ gulp.task('sass', function() {
         .pipe(browserSync.stream());
 });
 
-// Об'єднання і мінімізація JS файлів
-gulp.task('scripts', function() {
-    return gulp.src('src/js/**/*.js')
-        .pipe(concat('main.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('dist/js'))
-        .pipe(browserSync.stream());
-});
-
-// Інклуди HTML файлів
+// Include HTML files
 gulp.task('html', function() {
     return gulp.src('src/index.html')
         .pipe(fileInclude({
@@ -33,14 +23,24 @@ gulp.task('html', function() {
         .pipe(browserSync.stream());
 });
 
-// Копіювання зображень
+// Copy images
 gulp.task('images', function() {
     return gulp.src('src/img/**/*')
         .pipe(gulp.dest('dist/img'))
         .pipe(browserSync.stream());
 });
 
-// Налаштування BrowserSync
+// Compile JavaScript
+gulp.task('scripts', function() {
+    return gulp.src('src/js/**/*.js') // Джерело JavaScript файлів
+        .pipe(babel({
+            presets: ['@babel/preset-env'] // Налаштування Babel
+        }))
+        .pipe(gulp.dest('dist/js'))
+        .pipe(browserSync.stream());
+});
+
+// Setup BrowserSync
 gulp.task('serve', function() {
     browserSync.init({
         server: {
@@ -49,12 +49,11 @@ gulp.task('serve', function() {
     });
 
     gulp.watch('src/css/**/*.scss', gulp.series('sass'));
-    gulp.watch('src/js/**/*.js', gulp.series('scripts'));
     gulp.watch('src/**/*.html', gulp.series('html'));
-    gulp.watch('src/img/**/*', gulp.series('images')); // Додаємо спостереження за зображеннями
+    gulp.watch('src/img/**/*', gulp.series('images'));
+    gulp.watch('src/js/**/*.js', gulp.series('scripts')); // Додано для відстеження змін у JS файлах
     gulp.watch('dist/*.html').on('change', browserSync.reload);
 });
 
-// Завдання за замовчуванням
-gulp.task('default', gulp.series('sass', 'scripts', 'html', 'images', 'serve'));
-
+// Default task
+gulp.task('default', gulp.series('sass', 'html', 'images', 'scripts', 'serve'));
