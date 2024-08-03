@@ -132,8 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const caruselCards = document.querySelector('.actuallyOffers_carusel_cards');
     const arrows = document.querySelectorAll('.actuallyOffers_carusel_arrow');
 
-    let cardWidth = 600; // Початкова ширина картки
-    let visibleCards = 2; // Початкова кількість видимих карток
+    let cardWidth = 600; 
+    let visibleCards = 2; 
 
     let currentFilter = 'hot';
     let currentIndex = 0;
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `).join('')}
         `;
-        caruselCards.style.width = `${(cards.length + 2 * visibleCards) * cardWidth}px`; // Оновлюємо ширину контейнера
+        caruselCards.style.width = `${(cards.length + 2 * visibleCards) * cardWidth}px`; 
         caruselCards.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
     }
 
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (filter !== currentFilter) {
                 currentFilter = filter;
                 setActiveButton(filter);
-                currentIndex = 0; // Скидаємо індекс при зміні фільтра
+                currentIndex = 0; 
                 renderCards();
             }
         });
@@ -237,12 +237,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Обробка зміни розміру вікна
     window.addEventListener('resize', updateDimensions);
-    updateDimensions(); // Ініціалізуємо розміри при завантаженні сторінки
+    updateDimensions();
 });
 
-
+//--------------------------------
 
 document.addEventListener('DOMContentLoaded', () => {
     const burgerMenu = document.querySelector('.header_mobile_menu');

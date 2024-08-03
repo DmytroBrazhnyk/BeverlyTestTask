@@ -189,7 +189,7 @@ body {
 .actuallyOffers_carusel_card img {
   max-width: 100%;
   height: auto;
-  margin-left: 20px; /* Відступ між картинкою і текстом */
+  margin-left: 20px;
 }
 
 .actuallyOffers_carusel_card_text {
@@ -275,7 +275,7 @@ body {
   color: #666;
   align-self: flex-end;
   line-height: 1.6;
-  width: 50%; /* Adjust text width as needed */
+  width: 50%;
 }
 
 .register {
@@ -435,8 +435,8 @@ body {
   font-size: 18px;
 }
 .header_navigation_button:hover {
-  background-color: #e0a82d; /* Зміна кольору фону при ховері */
-  transform: scale(1.05); /* Легке збільшення при ховері */
+  background-color: #e0a82d;
+  transform: scale(1.05);
 }
 
 .header_navigation_button.first {
@@ -586,12 +586,12 @@ footer {
 
 @media (max-width: 1200px) {
   .actuallyOffers_carusel_card {
-    flex: 0 0 500px; /* Зменшити розмір карток на середніх екранах */
+    flex: 0 0 500px;
   }
 }
 @media (max-width: 900px) {
   .actuallyOffers_carusel_card {
-    flex: 0 0 400px; /* Зменшити розмір карток на менших екранах */
+    flex: 0 0 400px;
   }
   .advantages_content {
     flex-direction: column;
@@ -608,12 +608,12 @@ footer {
 }
 @media (max-width: 600px) {
   .actuallyOffers_carusel_card {
-    flex: 0 0 300px; /* Зменшити розмір карток на мобільних екранах */
-    position: relative; /* Додати позицію для коректного відображення картинки і тексту */
+    flex: 0 0 300px;
+    position: relative;
     background: rgba(25, 164, 206, 0.5);
   }
   .actuallyOffers_carusel_card img {
-    position: absolute; /* Картинка розтягується на весь блок */
+    position: absolute;
     left: 15%;
     margin: 0 auto;
     width: 70%;
@@ -627,12 +627,11 @@ footer {
     padding: 0;
     position: relative;
     z-index: 1;
-    padding: 10px; /* Зменшити відступи для мобільних екранів */
-    color: #ffffff; /* Білий текст */
+    padding: 10px;
+    color: #ffffff;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 10px;
     box-sizing: border-box;
-    /* Інші стилі для тексту */
   }
   .actuallyOffers_carusel_card_text_main {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
@@ -641,7 +640,7 @@ footer {
     font-size: 20px;
   }
   .actuallyOffers_carusel_card_text {
-    text-align: center; /* Вирівнювання тексту по центру для мобільних екранів */
+    text-align: center;
   }
   .advantages_content_img {
     max-width: 320px;
@@ -673,7 +672,7 @@ footer {
   flex-direction: column;
   padding: 20px;
   z-index: 1000;
-  display: none; /* Initially hidden */
+  display: none;
 }
 
 .header_mobile_menu_closeBtn {

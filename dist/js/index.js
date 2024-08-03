@@ -113,9 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var menuButtons = document.querySelectorAll('.actuallyOffers_menu_button');
   var caruselCards = document.querySelector('.actuallyOffers_carusel_cards');
   var arrows = document.querySelectorAll('.actuallyOffers_carusel_arrow');
-  var cardWidth = 600; // Початкова ширина картки
-  var visibleCards = 2; // Початкова кількість видимих карток
-
+  var cardWidth = 600;
+  var visibleCards = 2;
   var currentFilter = 'hot';
   var currentIndex = 0;
   function updateDimensions() {
@@ -144,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }).join(''), "\n            ").concat(cards.slice(0, visibleCards).map(function (card) {
       return "\n                <div class=\"actuallyOffers_carusel_card\">\n                    <img src=\"".concat(card.img, "\" alt=\"").concat(card.name, "\">\n                    <div class=\"actuallyOffers_carusel_card_text\">\n                        <div class=\"actuallyOffers_carusel_card_text_main\">\n                            <h3>").concat(card.name, "</h3>\n                            <p>").concat(card.period, "</p>\n                        </div>\n                        <p>").concat(card.description, "</p>\n                        <span>").concat(card.price, " \u20B4</span>\n                        <button>\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435</button>\n                    </div>\n                </div>\n            ");
     }).join(''), "\n        ");
-    caruselCards.style.width = "".concat((cards.length + 2 * visibleCards) * cardWidth, "px"); // Оновлюємо ширину контейнера
+    caruselCards.style.width = "".concat((cards.length + 2 * visibleCards) * cardWidth, "px");
     caruselCards.style.transform = "translateX(-".concat(currentIndex * cardWidth, "px)");
   }
   function setActiveButton(filter) {
@@ -158,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (filter !== currentFilter) {
         currentFilter = filter;
         setActiveButton(filter);
-        currentIndex = 0; // Скидаємо індекс при зміні фільтра
+        currentIndex = 0;
         renderCards();
       }
     });
@@ -174,11 +173,12 @@ document.addEventListener('DOMContentLoaded', function () {
       caruselCards.style.transform = "translateX(-".concat(currentIndex * cardWidth, "px)");
     });
   });
-
-  // Обробка зміни розміру вікна
   window.addEventListener('resize', updateDimensions);
-  updateDimensions(); // Ініціалізуємо розміри при завантаженні сторінки
+  updateDimensions();
 });
+
+//--------------------------------
+
 document.addEventListener('DOMContentLoaded', function () {
   var burgerMenu = document.querySelector('.header_mobile_menu');
   var burgerButton = document.querySelector('.header_hamburger_openBtn');
